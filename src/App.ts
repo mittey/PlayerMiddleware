@@ -46,6 +46,18 @@ class App {
       let player = Player.getInstance();
 
       player.play();
+
+      res.json({ message: "playing" });
+    });
+
+    router.post(`/stop`, (req, res, next) => {
+      // let player: any = new Player({ player: "mplayer.exe" });
+
+      let player = Player.getInstance();
+
+      player.stop();
+
+      res.json({ message: "paused" });
     });
 
     this.express.use('/', router);
