@@ -36,9 +36,8 @@ export default class PlayerSingleton {
     }
 
     public stop(): void {
-        console.log("tying to pause");
         if (this._stream) {
-            console.log("there is a stream to pause");
+            console.log("stopped");
             this._stream.unpipe();
         }
     }

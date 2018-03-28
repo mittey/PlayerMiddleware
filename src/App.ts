@@ -17,7 +17,6 @@ class App {
     this.express = express();
     this.middleware();
     this.routes();
-    this._player = Player.getInstance();
   }
 
   // Configure Express middleware.
@@ -41,8 +40,6 @@ class App {
     });
 
     router.post(`/play`, (req, res, next) => {
-      // let player: any = new Player({ player: "mplayer.exe" });
-
       let player = Player.getInstance();
 
       player.play();
@@ -51,8 +48,6 @@ class App {
     });
 
     router.post(`/stop`, (req, res, next) => {
-      // let player: any = new Player({ player: "mplayer.exe" });
-
       let player = Player.getInstance();
 
       player.stop();
