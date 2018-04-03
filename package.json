@@ -28,6 +28,7 @@
     "express": "^4.16.3",
     "lame": "^1.2.4",
     "morgan": "^1.9.0",
-    "speaker": "^0.4.0"
+    "playmusic": "^2.3.0",
+    "speaker": "^0.4.1"
   }
 }

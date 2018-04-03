@@ -3,6 +3,8 @@ import * as express from 'express';
 import * as logger from 'morgan';
 import * as bodyParser from 'body-parser';
 import Player from "./player";
+import {GMP as gmp} from './GMPlayer';
+
 
 // Creates and configures an ExpressJS web server.
 class App {
@@ -34,9 +36,9 @@ class App {
     let router = express.Router();
     // placeholder route handler
     router.get('/', (req, res, next) => {
-      res.json({
-        message: 'Hello World!'
-      });
+        gmp.search('we will rock you', res);
+      //res.json(Object.assign({},{message: 'Hello World!'}, resp))
+
     });
 
     router.post(`/play`, (req, res, next) => {
