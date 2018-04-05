@@ -41,6 +41,10 @@ class App {
 
     });
 
+    router.get('/play', (req,res,next) =>{
+        gmp.play('Ttgr5k6r7ukucady5yru4fnyvxa', res);
+    });
+
     router.post(`/play`, (req, res, next) => {
       let player = Player.getInstance();
 

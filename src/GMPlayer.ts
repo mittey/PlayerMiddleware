@@ -1,10 +1,16 @@
 //import {PlayMusic} from 'playmusic';
 var PlayMusic = require('playmusic');
 import {config2 as config} from './config'
+//var StreamPlayer = require('stream-player');
+var request = require('request');
+var lame = require('lame');
+var speaker = require('speaker');
+var audioOptions = {channels: 2, bitDepth: 16, mode: lame.STEREO};
+var self = null;
 
 var GMPlayer = function(){
-    this.instance = new PlayMusic();
-    //this.instance.login({email: config.email, password: config.pw, androidId: config.androidId}, function(err, obj){
+    self = this;
+    this.speaker = null;
     this.instance.init(config, function(err){
             if (err) console.log(err);
         });
@@ -13,9 +19,18 @@ GMPlayer.prototype.search = function (query, res){
     this.instance.search(query, 10, function(err, data){
         if (err) throw err;
         res.json(data);
-        //return {data: data};
-
     })
 };
+
+GMPlayer.prototype.play = function(id, res){
+    this.instance.getStreamUrl(id, (err, url) => {
+        if (err) res.json(err);
+        request.get(url).on('response', res => {
+            res.pipe(new lame.Decoder).pipe(new speaker(audioOptions));
+        });
+        res.json({songUrl: url, message: 'Song is playing'});
+
+    })
+}
 
 export let GMP = new GMPlayer();
