@@ -18,3 +18,6 @@ sudo npm install --unsafe-perm=true --allow-root
 ```console
 sudo apt-get install libasound2-dev
 ```
+```console
+sudo npm rebuild --unsafe-perm=t^Ce --allow-root
+```
