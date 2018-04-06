@@ -10,3 +10,11 @@ npm config set python "c:\Program Files (x86)\Python27\python.exe"
 
 ### How to use existing Google Music Account
 If you have exiting google account and want to use it in this project you need to generate application specific password on (https://security.google.com/settings/security/apppasswords) and then use it as a password for playmusic packet. It will allow backend to login to Google music and generate masterToken.
+
+### Important commands for the app to work on Linux (Ubuntu)
+```console
+sudo npm install --unsafe-perm=true --allow-root
+```
+```console
+sudo apt-get install libasound2-dev
+```
