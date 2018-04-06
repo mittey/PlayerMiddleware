@@ -11,6 +11,7 @@ var self = null;
 var GMPlayer = function(){
     self = this;
     this.speaker = null;
+    this.instance = new PlayMusic();
     this.instance.init(config, function(err){
             if (err) console.log(err);
         });
