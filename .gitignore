@@ -32,3 +32,4 @@ build/
 
 # configuration file with credentials
 config.ts
+src/config/
