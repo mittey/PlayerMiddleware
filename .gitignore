@@ -28,6 +28,7 @@ build/Release
 node_modules
 
 dist/
+build/
 
 # configuration file with credentials
 config.ts
