@@ -33,14 +33,21 @@ GMPlayer.prototype.search = function (query) {
 };
 
 GMPlayer.prototype.play = function (id, res) {
-    this.instance.getStreamUrl(id, (err, url) => {
-        if (err) res.json(err);
-        // request.get(url).on('response', res => {
-        //     res.pipe(new lame.Decoder).pipe(new speaker(audioOptions));
-        // });
-        res.json({ songUrl: url, message: 'Song is playing' });
 
-    })
+    return new Promise((resolve, reject) => {
+        this.instance.getStreamUrl(id, (err, url) => {
+            resolve(url);
+        });
+    });
+
+    // this.instance.getStreamUrl(id, (err, url) => {
+    //     if (err) res.json(err);
+    //     // request.get(url).on('response', res => {
+    //     //     res.pipe(new lame.Decoder).pipe(new speaker(audioOptions));
+    //     // });
+    //     res.json({ songUrl: url, message: 'Song is playing' });
+
+    // })
 }
 
 export let GMP = new GMPlayer();

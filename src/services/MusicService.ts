@@ -15,18 +15,16 @@ class MusicService {
         return result;
     }
 
-    async play(query: string) {
+    async play(query: string): Promise<string> {
         let result = await this.getTopTen(query);
 
-        let obj: SearchRoot = deserialize(SearchRoot, result);
+        let deserializedObj: SearchRoot = deserialize(SearchRoot, result);
 
-        let afterSort: Track = new List<Entry>(obj.entries).Where(e => e.type == "1").Select(e => e.track).FirstOrDefault();
+        let theTrack: Track = new List<Entry>(deserializedObj.entries).Where(e => e.type == "1").Select(e => e.track).FirstOrDefault();
 
-        // console.log(result);
+        let trackUrl: string = await gmp.play(theTrack.storeId);
 
-        // let afterSort = result.entries.Where(e => e.type == 1);
-
-        return afterSort;
+        return trackUrl;
     }
 }
 

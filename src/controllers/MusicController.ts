@@ -1,5 +1,6 @@
 import { Request, Response, NextFunction } from "express";
 import MusicService from "../services/MusicService"
+import { Track } from "../models/track";
 
 export default class MusicController {
     constructor() {
@@ -7,14 +8,11 @@ export default class MusicController {
     }
 
     async play(req: Request, res: Response, next: NextFunction): Promise<void> {
-        console.log("play");
+        let query = req.body.query;
 
-        let song = req.body.song;
-        let artist = req.body.artist;
+        let result: string = await MusicService.play(query);
 
-        let result = await MusicService.play(song);
-
-        res.json(result);
+        res.json({ trackUrl: result });
     }
 
     stop(req: Request, res: Response, next: NextFunction): void {
