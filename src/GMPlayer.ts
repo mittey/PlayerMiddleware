@@ -1,6 +1,6 @@
 //import {PlayMusic} from 'playmusic';
 var PlayMusic = require('playmusic');
-import { config2 as config } from './config/config'
+import { config2 as config } from '../config/config'
 //var StreamPlayer = require('stream-player');
 var request = require('request');
 var lame = require('lame');
