@@ -3,7 +3,8 @@ import * as express from 'express';
 import * as logger from 'morgan';
 import * as bodyParser from 'body-parser';
 import Player from "./player";
-import {GMP as gmp} from './GMPlayer';
+import { GMP as gmp } from './GMPlayer';
+import Routes from './routes';
 
 
 // Creates and configures an ExpressJS web server.
@@ -18,7 +19,9 @@ class App {
   constructor() {
     this.express = express();
     this.middleware();
-    this.routes();
+    // this.routes();
+
+    let routes: Routes = new Routes(this.express);
   }
 
   // Configure Express middleware.
@@ -36,13 +39,13 @@ class App {
     let router = express.Router();
     // placeholder route handler
     router.get('/', (req, res, next) => {
-        gmp.search('we will rock you', res);
+      gmp.search('we will rock you', res);
       //res.json(Object.assign({},{message: 'Hello World!'}, resp))
 
     });
 
-    router.get('/play', (req,res,next) =>{
-        gmp.play('Ttgr5k6r7ukucady5yru4fnyvxa', res);
+    router.get('/play', (req, res, next) => {
+      gmp.play('Ttgr5k6r7ukucady5yru4fnyvxa', res);
     });
 
     router.post(`/play`, (req, res, next) => {
