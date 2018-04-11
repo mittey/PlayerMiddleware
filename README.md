@@ -19,7 +19,7 @@ sudo npm install --unsafe-perm=true --allow-root
 sudo apt-get install libasound2-dev
 ```
 ```console
-sudo npm rebuild --unsafe-perm=t^Ce --allow-root
+sudo npm rebuild --unsafe-perm=true --allow-root
 ```
 ```console
 sudo docker run -p 3000:3000 --name player1 -v /tmp/.X11-unix:/tmp/.X11-unix --device /dev/snd -d mittey/web-api-player
