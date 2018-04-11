@@ -21,6 +21,8 @@ class MusicService {
     async play(query: string): Promise<string> {
         let result = await this.getTopTen(query);
 
+        console.log(query);
+
         let deserializedObj: SearchRoot = deserialize(SearchRoot, result);
 
         let theTrack: Track = new List<Entry>(deserializedObj.entries).Where(e => e.type == "1").Select(e => e.track).FirstOrDefault();
