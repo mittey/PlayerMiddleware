@@ -8,5 +8,6 @@ export default class Routes {
     constructor(app: Application) {
         app.route("/api/music/play").post(this._musicController.play);
         app.route("/api/music/stop").post(this._musicController.stop);
+        app.route("/api/music/songs").get(this._musicController.getSongs);
     }
 }

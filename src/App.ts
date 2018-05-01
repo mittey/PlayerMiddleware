@@ -2,7 +2,7 @@ import * as path from 'path';
 import * as express from 'express';
 import * as logger from 'morgan';
 import * as bodyParser from 'body-parser';
-import Player from "./player";
+// import Player from "./player";
 import { GMP as gmp } from './GMPlayer';
 import Routes from './routes';
 
@@ -13,7 +13,7 @@ class App {
   // ref to Express instance
   public express: express.Application;
 
-  private _player: Player;
+  // private _player: Player;
 
   //Run configuration methods on the Express instance.
   constructor() {
@@ -48,21 +48,21 @@ class App {
       gmp.play('Ttgr5k6r7ukucady5yru4fnyvxa', res);
     });
 
-    router.post(`/play`, (req, res, next) => {
-      let player = Player.getInstance();
+    // router.post(`/play`, (req, res, next) => {
+    //   let player = Player.getInstance();
 
-      player.play();
+    //   player.play();
 
-      res.json({ message: "playing" });
-    });
+    //   res.json({ message: "playing" });
+    // });
 
-    router.post(`/stop`, (req, res, next) => {
-      let player = Player.getInstance();
+    // router.post(`/stop`, (req, res, next) => {
+    //   let player = Player.getInstance();
 
-      player.stop();
+    //   player.stop();
 
-      res.json({ message: "paused" });
-    });
+    //   res.json({ message: "paused" });
+    // });
 
     this.express.use('/', router);
   }
